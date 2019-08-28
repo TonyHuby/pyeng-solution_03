@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-network = (input('Enter network address with prefix-mask: '))
+import sys
+
+network = sys.argv[1]
 
 addr = network.split('.')
 mask = addr[3].split('/')
@@ -19,6 +21,5 @@ output_n = ['\nNetwork:',
 
 output_m = ['\nMask:', '/{:8}', '{:<8} {:<8} {:<8} {:<8}', '{:<8} {:<8} {:<8} {:<8}']
 
-#print('\n'.join(output_n).format(addr[0],addr[1],addr[2],addr[3],int(addr[0]),int(addr[1]),int(addr[2]),int(addr[3])))
 print('\n'.join(output_n).format(int(binout[:8],2),int(binout[8:16],2),int(binout[16:24],2),int(binout[24:],2),int(binout[:8],2),int(binout[8:16],2),int(binout[16:24],2),int(binout[24:],2)))
 print('\n'.join(output_m).format(mask[1],int(binmask[:8],2),int(binmask[8:16],2),int(binmask[16:24],2),int(binmask[24:],2),binmask[:8],binmask[8:16],binmask[16:24],binmask[24:]))
