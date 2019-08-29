@@ -33,4 +33,5 @@ nameout = namelist.replace('dict_keys','').strip('(,)').replace('\'','').replace
 print('Enter parameter (',nameout,'): ') 
 param = input()
 
-print(london_co[name][param])
+
+print(london_co[name].get(param, 'Parameter does not exist'))
