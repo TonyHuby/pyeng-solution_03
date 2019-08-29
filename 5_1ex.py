@@ -34,4 +34,4 @@ print('Enter parameter (',nameout,'): ')
 param = input()
 
 
-print(london_co[name].get(param, 'Parameter does not exist'))
+print(london_co[name].get(param.lower(), 'Parameter does not exist'))
