@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-name = input('Enter Device name: ')
-param = input('Enter parameter: ')
 
 london_co = {
     'r1': {
@@ -28,5 +26,11 @@ london_co = {
         'routing': True
     }
 }
+
+name = input('Enter Device name: ')
+namelist = str(london_co[name].keys())
+nameout = namelist.replace('dict_keys','').strip('(,)').replace('\'','').replace('\'','').strip('[]')
+print('Enter parameter (',nameout,'): ') 
+param = input()
 
 print(london_co[name][param])
