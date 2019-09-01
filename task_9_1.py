@@ -26,11 +26,11 @@ def generate_access_config(intf_vlan_mapping, access_template):
     result = []
     for intf, intfkey in intf_vlan_mapping.items():
         result.append('interface {}'.format(intf))
-        result.append(access_template[0])
-        result.append(str(access_template[1]) + ' ' + str(intfkey))
-        result.append(access_template[2])
-        result.append(access_template[3])
-        result.append(access_template[4])
+        for template in access_template:
+            if 'access vlan' in template:
+                result.append(str(template) + ' ' + str(intfkey))
+            else:
+                result.append(template)
     return result
 
 print(generate_access_config(access_config, access_mode_template))
