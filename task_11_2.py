@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from draw_network_graph import draw_topology
 '''
 Задание 11.2
 
@@ -62,17 +63,11 @@ def create_network_map(*cdp_files):
                 remote_name = line.split()[0]
                 local_unit = (local_name, local_int)
                 remote_unit = (remote_name, remote_int)
-                result[local_unit] = remote_unit
+                if remote_unit not in result.keys():
+                    result[local_unit] = remote_unit
     return result
 result = (create_network_map('sh_cdp_n_sw1.txt','sh_cdp_n_r1.txt','sh_cdp_n_r2.txt','sh_cdp_n_r3.txt'))
-[print(res) for res in result.items()]
+#[print(res) for res in result.items()]
+draw_topology(result)
 
- 
-#cdpn = open('sh_cdp_n_sw1.txt', 'r')
-#local_name = cdpn.read().split('>')[0][1:]
-#sep_cdp = open('sh_cdp_n_sw1.txt', 'r').read().split('\n')[7:]
-#result =  {}
-
-
-#def parse_cdp_neighbor(command_output):
 
