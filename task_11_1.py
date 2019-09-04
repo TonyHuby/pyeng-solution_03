@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
  
 #cdpn = open('sh_cdp_n_sw1.txt', 'r')
 #local_name = cdpn.read().split('>')[0][1:]
