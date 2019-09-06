@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+def convert_ranges_to_ip_list(*args):
+    long_hosts = []
+    for ip_a in args:
+        ip_split = ip_a.split('-')
+        if len(ip_split) > 1 :
+            if len(ip_split[1].split('.')) > 1:
+                    octet_list = range(int(ip_split[0].split('.')[-1]), int(ip_split[1].split('.')[-1]))
+                    for octet in list(octet_list):
+                        res = ''
+                        splitted = ip_split[1].split('.')
+                        splitted[-1] = octet
+                        for oc in splitted:
+                            res = str(res) + str(oc) + '.'
+                        long_hosts.append(res.strip('.'))
+    return long_hosts
+
+print(convert_ranges_to_ip_list('10.1.1.1-10.1.1.10'))
+
+
