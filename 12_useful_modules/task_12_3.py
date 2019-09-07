@@ -1,25 +1,21 @@
-# -*- coding: utf-8 -*-
-'''
-Задание 12.3
+#!/usr/bin/env python
+from task_12_1 import ping_ip
+from tabulate import tabulate
+from sys import argv
+
+resultat = ['1.1.1.1','2.2.2.2','8.8.4.4','12.12.32.12']
+def print_ip_table(a_ip):
+    colums = ['Reachable', 'Unreachable']
+    if len(a_ip[0]) > len(a_ip[1]):
+        for smth in range(len(a_ip[0]) - len(a_ip[1])):
+            a_ip[1].append('')
+    elif len(a_ip[0]) < len(a_ip[1]):
+        for smth in range(len(a_ip[1]) - len(a_ip[0])):
+            a_ip[0].append('')
+    else: pass
+    result = list(zip(a_ip[0],a_ip[1]))
+    print(tabulate(result, headers = colums))
 
 
-Создать функцию print_ip_table, которая отображает таблицу доступных и недоступных IP-адресов.
-
-Функция ожидает как аргументы два списка:
-* список доступных IP-адресов
-* список недоступных IP-адресов
-
-Результат работы функции - вывод на стандартный поток вывода таблицы вида:
-
-Reachable    Unreachable
------------  -------------
-10.1.1.1     10.1.1.7
-10.1.1.2     10.1.1.8
-             10.1.1.9
-
-Функция не должна изменять списки, которые переданы ей как аргументы.
-То есть, до выполнения функции и после списки должны выглядеть одинаково.
-
-
-Для этого задания нет тестов
-'''
+s = ping_ip(*argv[1:])
+print_ip_table(s)
