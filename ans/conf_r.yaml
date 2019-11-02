@@ -1,0 +1,10 @@
+
+- name: Run conf on routers
+  hosts: routers
+  tasks:
+          - name: Add user
+            ios_config:
+                    lines:
+                            - username telecom secret Per0Jn2#$
+                            - username telecom privilege 15
+                           

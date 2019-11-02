@@ -1,0 +1,5 @@
+- name: check cdp switches neighbours 
+  hosts: switches
+  tasks:
+   - name: show cdp nei
+     raw: show cdp nei

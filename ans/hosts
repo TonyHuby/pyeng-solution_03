@@ -1,0 +1,10 @@
+
+[routers]
+192.168.100.[1:4]
+
+[switches]
+192.168.100.10
+
+[cisco_devices:children]
+switches
+routers
